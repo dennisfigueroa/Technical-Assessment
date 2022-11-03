@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+@model WebApplication1.Models.InputNumber  
+
+}
+
+
+
+<div class="text-center">
+    
+   
+    <h1 class="display-4">Welcome</h1>
+   
+@using (Html.BeginForm("printList", "Home"))
+{
+    @Html.TextBoxFor(m => m.EnteredNumber)  
+    <input id="Submit1" type="submit" value="Print all integers"/>
+    @Html.ValidationMessageFor(m => m.EnteredNumber)  
+    
+
+}
+    @if (ViewBag.MyList != null)
+     {
+         <br/>
+         <ul>
+             @foreach (var number in ViewBag.MyList)
+             {
+                 
+                 if (number == "walkers")
+                 {
+                     <li style="list-style:none; color: green;">@number</li>
+
+                 }
+                 else if (number == "assessment")
+                 {
+                     <li style="list-style:none; color: red;">@number</li>
+
+                 }
+                 else
+                 {
+                     <li style="list-style:none;">@number</li>
+                 }
+             }
+         </ul>
+     }
+    
+    
+</div>
+
